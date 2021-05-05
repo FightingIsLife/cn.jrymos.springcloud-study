@@ -1,0 +1,22 @@
+server:
+  port: 80
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowerCaseServiceId: true
+  application:
+    name: gateway
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka
+hystrix:
+  metrics:
+    enabled: true

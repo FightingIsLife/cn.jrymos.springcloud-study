@@ -1,0 +1,16 @@
+server:
+  port: 8011
+spring:
+  application:
+    name: provider
+  cloud:
+    inetutils:
+      preferred-networks: 10
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka

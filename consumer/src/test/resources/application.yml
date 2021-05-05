@@ -1,0 +1,22 @@
+server:
+  port: 8021
+spring:
+  application:
+    name: consumer
+  cloud:
+    inetutils:
+      preferred-networks: 10
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    connection-timeout: 2000
+    time-to-live: 10

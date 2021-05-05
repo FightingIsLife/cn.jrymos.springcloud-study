@@ -1,0 +1,44 @@
+server:
+  port: 8020
+spring:
+  application:
+    name: consumer
+  cloud:
+    inetutils:
+      preferred-networks: 10
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    serviceUrl:
+      defaultZone: http://localhost:8001/eureka,http://localhost:8002/eureka
+feign:
+  hystrix:
+    enabled: true
+  httpclient:
+    connection-timeout: 100
+    time-to-live: 10
+    enabled: true
+  okhttp:
+    enabled: false
+#配置日志
+logging:
+  #指定不同目录下的日志的级别
+  level:
+    com.shimain.springboot.mapper: DEBUG
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          strategy: THREAD
+          thread:
+            timeoutInMilliseconds: 100
+management:
+  endpoints:
+    enabled: true
+    web:
+      exposure:
+        include: "*"
